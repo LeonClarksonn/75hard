@@ -1,27 +1,42 @@
 {
   "expo": {
-    "name": "75hard",
+    "name": "75 Hard Challenge",
     "slug": "75hard",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "75hard",
+    "icon": "./assets/images/favicon75.png",
+    "scheme": "seventyfivehard",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "description": "Track your 75 Hard challenge with friends - daily workouts, diet, water, reading, and progress photos.",
+    "keywords": ["75hard", "fitness", "challenge", "workout", "health", "motivation"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to take daily progress photos and scan friend QR codes for your 75 Hard challenge.",
+        "NSPhotoLibraryUsageDescription": "This app accesses your photo library to select progress photos for your 75 Hard challenge."
+      },
+      "bundleIdentifier": "com.tomclarkson.x75hard",
+      "appleTeamId": "N9G87U3FM7"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ],
+      "package": "com.tomclarkson.x75hard"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon75.png"
     },
     "plugins": [
       "expo-router",
@@ -33,10 +48,32 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you select progress photos.",
+          "cameraPermission": "The app accesses your camera to let you take progress photos."
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow 75 Hard to access your camera to scan friend QR codes."
+        }
+      ],
+      "expo-web-browser",
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "db20569e-0bc2-4d3e-a6c6-2c29f7b48daa"
+      }
+    },
+    "owner": "tommyc"
   }
 }
